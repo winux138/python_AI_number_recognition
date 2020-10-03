@@ -1,4 +1,5 @@
 import tensorflow as tf
+import export_image as ei
 mnist = tf.keras.datasets.mnist
 
 (x_train, y_train),(x_test, y_test) = mnist.load_data()
@@ -15,6 +16,8 @@ for i in range(0,28):
     f.write('\n')
 
 f.close()
+
+ei.img_out(x_train[1],"img/image1.png")
 
 """
 model = tf.keras.models.Sequential([
