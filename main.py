@@ -1,10 +1,14 @@
 import tensorflow as tf
+import export_image as img
+
 mnist = tf.keras.datasets.mnist
 
-(x_train, y_train),(x_test, y_test) = mnist.load_data()
-#print(y_test[0])
-x_train, x_test = x_train / 255.0, x_test / 255.0
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+for i in range(11,20):
+    img.img_out(x_train[i], "img/img" + str(i) + ".png")
+    print(y_train[i])
 """
+x_train, x_test = x_train / 255.0, x_test / 255.0
 f = open("x_train0.txt", "w")
 for i in range(0,28):
     for j in range(0,28):
@@ -15,13 +19,13 @@ for i in range(0,28):
     f.write('\n')
 
 f.close()
-
+"""
 """
 model = tf.keras.models.Sequential([
-  tf.keras.layers.Flatten(input_shape=(28, 28)),
-  tf.keras.layers.Dense(128, activation='relu'),
-  tf.keras.layers.Dropout(0.2),
-  tf.keras.layers.Dense(10, activation='softmax')
+    tf.keras.layers.Flatten(input_shape=(28, 28)),
+    tf.keras.layers.Dense(128, activation='relu'),
+    tf.keras.layers.Dropout(0.2),
+    tf.keras.layers.Dense(10, activation='softmax')
 ])
 
 model.compile(optimizer='adam',
@@ -30,3 +34,4 @@ model.compile(optimizer='adam',
 
 model.fit(x_train, y_train, epochs=5)
 model.evaluate(x_test, y_test)
+"""
