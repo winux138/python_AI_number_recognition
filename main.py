@@ -1,28 +1,30 @@
 import tensorflow as tf
 import export_image as ei
+import matplotlib.pyplot  as plt
 mnist = tf.keras.datasets.mnist
 
 (x_train, y_train),(x_test, y_test) = mnist.load_data()
-#print(y_test[0])
-#x_train, x_test = x_train / 255.0, x_test / 255.0
+L=[1,2,3]
+print(L[:1])
+ei.img_out(x_train[2],"img/image2.png")
 
-f = open("x_train0.txt", "w")
-for i in range(0,28):
-    for j in range(0,28):
-        if (x_test[0][i][j] == 0):
-            f.write('...')
-        else:
-            f.write(("000"+str(x_test[0][i][j]))[-4:-1])
-    f.write('\n')
 
-f.close()
+plt.figure()
+plt.imshow(x_train[0])
+plt.colorbar()
+plt.grid(False)
+plt.show()
 
-ei.img_out(x_train[1],"img/image1.png")
 
-"""
+
+x_train, x_test = x_train / 255.0, x_test / 255.0
+
+
+
+
 model = tf.keras.models.Sequential([
   tf.keras.layers.Flatten(input_shape=(28, 28)),
-  tf.keras.layers.Dense(128, activation='relu'),
+  tf.keras.layers.Dense(10000, activation='relu'),
   tf.keras.layers.Dropout(0.2),
   tf.keras.layers.Dense(10, activation='softmax')
 ])
@@ -33,4 +35,3 @@ model.compile(optimizer='adam',
 
 model.fit(x_train, y_train, epochs=5)
 model.evaluate(x_test, y_test)
-"""
