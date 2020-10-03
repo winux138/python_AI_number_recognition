@@ -3,15 +3,15 @@ mnist = tf.keras.datasets.mnist
 
 (x_train, y_train),(x_test, y_test) = mnist.load_data()
 #print(y_test[0])
-x_train, x_test = x_train / 255.0, x_test / 255.0
-"""
+#x_train, x_test = x_train / 255.0, x_test / 255.0
+
 f = open("x_train0.txt", "w")
 for i in range(0,28):
     for j in range(0,28):
         if (x_test[0][i][j] == 0):
             f.write('...')
         else:
-            f.write(str(x_test[0][i][j]))
+            f.write(("000"+str(x_test[0][i][j]))[-4:-1])
     f.write('\n')
 
 f.close()
@@ -30,3 +30,4 @@ model.compile(optimizer='adam',
 
 model.fit(x_train, y_train, epochs=5)
 model.evaluate(x_test, y_test)
+"""
