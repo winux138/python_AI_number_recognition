@@ -7,6 +7,7 @@ mnist = tf.keras.datasets.mnist
 for i in range(11,20):
     img.img_out(x_train[i], "img/img" + str(i) + ".png")
     print(y_train[i])
+    print("coucou")
 """
 x_train, x_test = x_train / 255.0, x_test / 255.0
 f = open("x_train0.txt", "w")
