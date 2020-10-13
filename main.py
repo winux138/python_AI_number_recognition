@@ -8,6 +8,8 @@ mnist = tf.keras.datasets.mnist
 
 ei.img_out(x_train[2],"img/image2.png")
 
+#petit test git avec ASMAOU
+
 """
 plt.figure()
 plt.imshow(x_test[0])
